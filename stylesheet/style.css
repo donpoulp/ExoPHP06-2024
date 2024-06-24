@@ -36,13 +36,13 @@
 }
 
 /* MAIN */
-#Section1{
+#Section1, #CONTACT{
     margin-left: 20%;
     margin-right: 20%;
     height: 100vh;
 
 }
-#Section1 h2{
+#Section1 h2, #CONTACT h2{
     text-align: center;
     font-size: 6rem;
     text-shadow:5px 5px #558ABB;
@@ -67,6 +67,23 @@
 }
 #Section1 p{
     font-size: 1.2rem;
+}
+
+/* CONATC */
+.formulaireContact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: solid 2px black;
+    box-shadow: 12px 12px 12px 12px rgba(0, 0, 0, 0.288);
+}
+.reponseFormContact{
+    font-size:2rem;
+    color: gray;
+}
+.wrong{
+    color: red;
+    font-size: 0.9rem;
 }
 
 
