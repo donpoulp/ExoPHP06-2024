@@ -1,4 +1,7 @@
 <!-- header -->
+<?php session_start();
+$id_session = session_id();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
