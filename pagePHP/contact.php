@@ -24,31 +24,25 @@ $_SESSION['message']=$_POST['message'];
 
                 <label for="nom">Nom:</label>
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if(empty($_POST['nom'])){
+                    if(filter_has_var(INPUT_POST, 'nom') && empty($_POST['nom'])){
                         echo "<p class='wrong'>Entré un nom valide</p>";
                     }
-                }
                 ?>
                 <input type="text" id="nom" name="nom" value="<?php echo $_SESSION['nom'] ?>">
 
                 <label for="prenom">Prénom:</label>
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if(empty($_POST['prenom'])){
+                    if(filter_has_var(INPUT_POST, 'prenom') && empty($_POST['prenom'])){
                         echo "<p class='wrong'>Entré un prenom valide</p>";
                     }
-                }
                 ?>
                 <input type="text" id="prenom" name="prenom" value="<?php echo $_SESSION['prenom'] ?>">
 
                 <label for="email">Email:</label>
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) && filter_has_var(INPUT_POST, 'email')){
                         echo "<p class='wrong'>Entré un email valide</p>";
                     }
-                }
                 ?>
                 <input type="email" id="email" name="email" value="<?php echo $_SESSION['email'] ?>">
 
@@ -71,11 +65,9 @@ $_SESSION['message']=$_POST['message'];
 
                 <label for="message">Message:</label>
                 <?php
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if ( strlen($_POST['message'])<5){
+                    if ( strlen($_POST['message'])<5 && filter_has_var(INPUT_POST, 'message')){
                         echo '<p class="wrong">message trop court</p>';
                     }
-                }
                 ?>
                 <textarea id="message" name="message" rows="4" cols="50"><?php echo $_SESSION['message']?></textarea>
 
@@ -91,4 +83,4 @@ $_SESSION['message']=$_POST['message'];
     </section>
 </main>
 
-<?php include('footer.php'); ?>
+<?php include('footer.php'); session_destroy();?>

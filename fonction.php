@@ -3,12 +3,12 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if( strlen($_POST['message'])>=5 && !empty($_POST['nom']) && !empty($_POST['prenom']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                 if($_POST['raison']=='Service comptable' || $_POST['raison']=='Support technique' || $_POST['raison']=='Autre'){
-                    $civilite = $_POST['civilite'];
-                    $nom = ($_POST['nom']);
-                    $prenom = ($_POST['prenom']);
-                    $email = htmlspecialchars($_POST['email']);
-                    $raison = $_POST['raison'];
-                    $message = htmlspecialchars($_POST['message']);
+                    $civilite = filter_input(INPUT_POST, 'civilite');
+                    $nom = filter_input(INPUT_POST, 'nom');
+                    $prenom = filter_input(INPUT_POST, 'prenom');
+                    $email = filter_input(INPUT_POST, 'email');
+                    $raison = filter_input(INPUT_POST, 'raison');
+                    $message = filter_input(INPUT_POST, 'message');
 
                     $data=array($civilite,$nom,$prenom,$email,$raison,$message);
 
@@ -31,4 +31,4 @@
             }
         }
     }
-        ?>
+?>
